@@ -20,9 +20,9 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-    console.log("user connected: ", socket.id);
+    console.log("A user connected: ", socket.id);
 
-    
+    // Assign roles to players
     if (!players.white) {
         players.white = socket.id;
         socket.emit("playerRole", "w");
@@ -33,8 +33,8 @@ io.on("connection", (socket) => {
         socket.emit("spectatorRole");
     }
 
-    socket.on("disconnect", (b) => {
-        console.log("user disconnected: ", socket.id);
+    socket.on("disconnect", () => {
+        console.log("A user disconnected: ", socket.id);
         if (socket.id === players.white) {
             delete players.white;
         } else if (socket.id === players.black) {

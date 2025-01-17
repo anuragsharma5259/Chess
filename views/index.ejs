@@ -6,26 +6,35 @@
     <title>Chess Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chessboard {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: repeat(8, 1fr);
-            width: 400px;
-            height: 400px;
-        }
-        .piece.white { color: white; }
-        .piece.black { color: black; }
-        .flipped { transform: rotate(180deg); }
-        .square { display: flex; align-items: center; justify-content: center; }
-        .square.light { background-color: #f0d9b5; }
-        .square.dark { background-color: #b58863; }
-        .piece {
+       .chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 400px;
+    height: 400px;
+}
+.piece.white { color: white; }
+.piece.black { color: black; }
+.flipped { transform: rotate(180deg); }
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+}
+.square.light { background-color: #f0d9b5; }
+.square.dark { background-color: #b58863; }
+.piece {
     font-size: 36px;
     cursor: pointer;
-    
+    user-select: none;
 }
-
-    </style>
+.piece:active {
+    opacity: 0.5;
+}
+</style>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-800">
     <div class="chessboard"></div>
